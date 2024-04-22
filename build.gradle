@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+application {
+    getMainClass().set('de.artus.Main')
+}
+
+
+group 'de.artus'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+    maven { url "https://maven.mineking.dev/releases" }
+    maven { url "https://maven.mineking.dev/snapshots" }
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // JUnit
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // Socket connections
+    implementation 'io.netty:netty-all:4.1.109.Final'
+    // SRV Lookup
+    implementation 'dnsjava:dnsjava:3.5.3'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
+    implementation 'ch.qos.logback:logback-classic:1.5.3'
+
+    // TextComponent for Minecraft
+    implementation "net.kyori:adventure-api:4.16.0"
+    implementation "net.kyori:adventure-text-serializer-gson:4.16.0"
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.10'
+
+
+    // Event API (Cyklonne)
+    implementation 'de.cyklon:JEvent:1.4.0'
+    implementation "de.cyklon:ReflectionUtils:fa134db"
+
+}
+
+test {
+    useJUnitPlatform()
+}
